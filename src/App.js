@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css'
 //class component
-class App extends Component {
+
+class App extends React.Component {
   constructor(props,timer){
     super(props)
     this.timer = timer
     this.state = {
-      hour : 0,
+      hours : 0,
       minutes : 0,
       seconds : 0,
       milliseconds: 0
@@ -43,7 +44,7 @@ handleStart = () =>{
   if (this.state.minutes === 60){
     this.setState((prevState)=>{
       return {
-        hour : prevState.hour + 1,
+        hour : prevState.hours + 1,
         minutes:0
       }
     },10)
@@ -56,7 +57,12 @@ handleStop = () =>{
 
 handleReset = () =>{
   this.setState(() =>{
-    return {hour:0,minutes : 0, seconds:0, milliseconds: 0}
+    return {
+      hour:0, 
+      minutes : 0, 
+      seconds:0,
+       milliseconds: 0
+      }
   })
 }
 
@@ -68,8 +74,12 @@ handleReset = () =>{
     return (
       <div>
         <Header/>
-        <Action handleReset = {this.handleReset} handleStart = {this.handleStart} handleStop= {this.handleStop}/>
         <Timer time= {this.time}/>
+        <Action 
+        handleReset = {this.handleReset}
+         handleStart = {this.handleStart} 
+         handleStop= {this.handleStop}
+         />
       </div>
     );
   }
@@ -97,9 +107,9 @@ const Action = (props) => {
 const Timer = (props) => {
   return (
     <div className="timer">
-      <div className="hour">{props.time.hour}</div>
-      <div className="minute">{props.time.minutes}</div>
-      <div className="seconds">{props.time.seconds}</div>
+      <div className="hour"> {props.time.hours} </div> :
+      <div className="minute">{props.time.minutes}</div> :
+      <div className="seconds">{props.time.seconds}</div>:
       <div className="milliseconds">(props.time.milliseconds}</div>
     </div>
   )
