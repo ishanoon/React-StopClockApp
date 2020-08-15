@@ -1,4 +1,7 @@
 import React from 'react';
+import Header from './Component/Header'
+import Timer from './Component/Timer'
+import Action from './Component/Action'
 import './App.css'
 
 //class component
@@ -89,37 +92,7 @@ handleReset = () =>{
     );
   }
 }
-// functional  component
-
-const Header = () => {
-  return (
-    <div>
-      <h1 className="heading">STOP CLOCK</h1>
-    </div>
-  )
-}
 
 
-const Timer = (props) => {
-  return (
-    <div className="timer">
-      <div className="hour"> {props.time.hours} </div> :
-      <div className="minute">{props.time.minutes}</div> :
-      <div className="second">{props.time.seconds}</div>:
-      <div className="millisecond">{props.time.milliseconds}</div>
-    </div>
-  )
-}
-
-//for button
-const Action = (props) => {
-  return (
-    <div className="action">
-      <button id="reset" onClick={props.handleReset}>Reset</button>
-      <button id="start" onClick={props.handleStart}>Start</button>
-      <button id="stop" onClick={props.handleStop}>Stop</button>
-    </div>
-  )
-}
 
 export default App;
